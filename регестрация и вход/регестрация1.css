@@ -1,0 +1,28 @@
+body{margin: 0px;
+	padding: 0px;
+	background-image: url(../фото/фон_1.jpg);
+}
+
+.row{
+	text-align: center;
+	
+}
+.row >.col-4> h1{
+	color:#800000 ;
+	text-shadow: black 1px 2.5px;
+}
+#butt{
+	background-color: #800000;
+	border: 0px;
+	box-shadow: 10px 10px 5px black;
+	border-radius: 15px;
+
+}
+
+#menu{
+	display: flex;
+}
+.menu__comp{
+	padding-top: 10px;
+	padding-left: 30px;
+}
