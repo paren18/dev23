@@ -44,14 +44,17 @@ $resultComments = mysqli_query($mysql, "SELECT * FROM `comments` WHERE `idotziv`
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-<h1><?php echo $otziv['heading']; ?></h1>
-<h3>Автор: <?php echo $otziv['login']; ?></h3>
-<h3>Краткое содержание: <?php echo $otziv['summary']; ?></h3>
-<h2>Полное содержание:</h2>
-<p class="border border-dark bg-white pb-5"><?php echo $otziv['text']; ?></p>
-
-<a href="edit.php?id=<?php echo $otziv["id"]; ?>&login=<?php echo $otziv["login"]; ?>"
-       class="text-dark h5">Изменить</a>
+            <h1><?php echo $otziv['heading']; ?></h1>
+            <h3>Автор: <?php echo $otziv['login']; ?></h3>
+            <h3>Краткое содержание: <?php echo $otziv['summary']; ?></h3>
+            <h2>Полное содержание:</h2>
+            <p class="border border-dark bg-white pb-5"><?php echo $otziv['text']; ?></p>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="edit.php?id=<?php echo $otziv["id"]; ?>&login=<?php echo $otziv["login"]; ?>"
+                   class="text-dark h5">Изменить</a>
+            <?php else: ?>
+                <div>Нельзя изменить(войдите в аккаунт)</div>
+            <?php endif ?>
             <h2 class="mt-4">Комментарии:</h2>
             <?php
             while ($comment = mysqli_fetch_assoc($resultComments)) {

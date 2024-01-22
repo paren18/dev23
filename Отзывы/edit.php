@@ -16,16 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $text = $_POST['text'];
 
 
-
     $queryUpdate = "UPDATE `otziv` SET `heading` = '$heading', `login` = '$login', `summary` = '$summary', `text` = '$text' WHERE `id` = $id";
     $result = mysqli_query($mysql, $queryUpdate);
 
-
-    $commentText = $_POST['comment'];
-    $queryInsertComment = "INSERT INTO `comments` (`idotziv`, `text`) VALUES ($id, '$commentText')";
-    $resultComment = mysqli_query($mysql, $queryInsertComment);
+    $commentText = isset($_POST['comment']) ? trim($_POST['comment']) : '';
+    if (!empty($commentText)) {
+        $queryInsertComment = "INSERT INTO `comments` (`idotziv`, `text`) VALUES ($id, '$commentText')";
+        $resultComment = mysqli_query($mysql, $queryInsertComment);
+    }
 
     header('Location: Отзывы.php');
+    exit();
     exit();
 }
 ?>
